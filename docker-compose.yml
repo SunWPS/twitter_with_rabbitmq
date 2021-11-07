@@ -1,0 +1,15 @@
+version: "3"
+services:
+
+ rabbitmq: # guest/guest
+    image:  rabbitmq:3-management-alpine
+    hostname: rabbitmq
+    ports:
+     - 5672:5672 # rabbitmq
+     - 8081:15692 # prometheus HTTP GET /metrics
+     - 8080:15672 # management UI
+    volumes:
+      - rabbitmq-storage:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq-storage:
